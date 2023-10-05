@@ -1,3 +1,3 @@
-# *C. elegans* spindle dynamics analysis
+# *C. elegans* spindle sacling and dynamics analysis
 This repository contains a workflow for the processing and analysis of the *C. elegans* spindle dynamics data. The workflow assumes a step-by-step analysis and the corresponding description of the idea behind each analysis.
 ...
