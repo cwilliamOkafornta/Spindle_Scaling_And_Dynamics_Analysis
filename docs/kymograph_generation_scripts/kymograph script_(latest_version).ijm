@@ -1,12 +1,50 @@
-//Kymograph generation script
+// Kymograph generation script
+// -------------------------------
+// 
+// This script takes a 3D+time+channel stack and a cvs file containing the 
+// 3D coordinates of the centrosomes of the corresponding image file as input. 
+// The script generates 2D kymographs over time series and stack them together 
+// as a continuous representative kymograph
+//
+// 
+// Installation: 
+//   To use this script in Fiji (http://fiji.sc/Downloads), you need to activate
+//   the clij and clij2 update sites in the menu Help > Update... under 
+//   Manage Update Sites. Restart Fiji after installation. 
+//   Read more about CLIJ online: http://clij.github.io
+//
+// Usage:
+//   * Drag and drop this file on the Fiji main window.
+//   * Configure filename and properts below this comment.
+//   * Click "run" in Fijis script editor.
+//
+// Authors: Robert Haase, rhaase@mpi-cbg.de
+//			Chukwuebuka William Okafornta, chukwuebuka.okafornta@tu-dresden.de
+// 
+// January 2021
+// License: BSD3
+// 
+// Copyright 2021	Robert Haase, Max Planck Institute for Molecular Cell Biology and Genetics Dresden
+//					Chukwuebuka William Okafornta,  Medical Theoretical Center, Technische Universität Dresden
+//
+// Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+// 1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+// 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+// 3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+// 
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND 
+// FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES 
+// (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
+// STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//
 
-//clean up and reset all windows
+
+// clean up and reset all windows
 close("*");
 roiManager("reset");
 
 //define the path
 folder = "D:/data/Analysis Data/Exp_data/Exp_RNAi_c27d9.1/Exp59a_tmr31-c27d9-1-08cell_LLSM_20220126/Exp59a_tmr31-c27d9-1-08cell_LLSM_20220126_Analysis/8cell_ABar/8cell_ABar_ImageJ/";
-//image = "8cell_ABar_kymo/8cell_ABar.tif";
 image = "8cell_ABar.tif";
 table = "8cell_ABar_coordinates.csv";
 Kymo = "8cell_ABar_kymo/8cell_ABar_kymo.tif";
@@ -14,14 +52,7 @@ Kymo = "8cell_ABar_kymo/8cell_ABar_kymo.tif";
 //loading the image
 open(folder + image);
 open(folder + table);
-
-//open(image);
-//open(table);
-
-//open(table);
 Table.rename(table, "Results");
-
-// one micron is divided into pixels
 
 //Init GPU 
 run("CLIJ2 Macro Extensions", "cl_device="); 
@@ -105,16 +136,11 @@ for (frame = 0; frame < frames; frame++) {
 	
 	// elongate stack in Z to not miss centrioles moving apart (cropping a bit wider before and after the 2 points to avoid missing the poles)
 	elongation_z = 2.0;
-	//elongation_z = 4.0;
-	newDepth = slices * pixel_size_z * zoom * elongation_z; 
-//	print(newDepth);
 	
+	newDepth = slices * pixel_size_z * zoom * elongation_z;
 	scale_factor_x = newWidth / width;
 	scale_factor_y = newHeight / height;
 	scale_factor_z = newDepth / slices / elongation_z;
-	
-	
-//	print(scale_factor_z);
 	
 	// formulate the affine transform
 	// see https://clij.github.io/clij2-docs/reference_affineTransform3D
@@ -212,7 +238,6 @@ run("Enhance Contrast", "saturated=0.35");
 Stack.setChannel(2);
 run("Enhance Contrast", "saturated=0.35");
 saveAs("tif", folder + Kymo);
-//saveAs("tif", Kymo);
 
 // show and merge maximum projections 
 for (p = 0; p < 3; p++) { 
@@ -235,5 +260,4 @@ for (p = 0; p < 3; p++) {
 Ext.CLIJ2_reportMemory(); 
 Ext.CLIJ2_clear(); 
 print("Bye");
-
-
+
