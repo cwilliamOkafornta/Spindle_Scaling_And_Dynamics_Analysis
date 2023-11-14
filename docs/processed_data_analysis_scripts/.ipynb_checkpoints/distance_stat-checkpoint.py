@@ -9,17 +9,20 @@ import numpy as np
 from numpy import mean
 
 ######################################################################################################################################
-'''
-The following functions are used to process the csv files generated after  extracting the coordinate positions information of the centrosomes and 
-chromosomes intensities from kymographs. The coordinate positions information can be extracted with a MatLab or python custom code (see folder: intensity_readout_scripts). 
-This script is tested for the csv files generated from MatLab code.
-
-The workflow is adopted to give a new heading to each column on the csv files, followed by calculating the distances using the 
-positions provided in each file. Each file is labeled with the name of the kymograph from a given cell type of the C. elegans embryo. 
-The next step is to extract similar columns in each file and add them to a created csv file with a given name. The new files are 
-saved in different folder
-'''
-#####################################################################################################################################
+#                                                                                                                                    #
+# The following functions are used to process the csv files generated after  extracting the coordinate positions information of the  #
+# centrosomes and chromosomes intensities from kymographs. The coordinate positions information can be extracted with a MatLab or    #
+# python custom code (see folder: intensity_readout_scripts).                                                                        #
+# This script is tested for the csv files generated from MatLab code.                                                                #
+#                                                                                                                                    #
+# The workflow is adopted to give a new heading to each column on the csv files, followed by calculating the distances using the     #
+# positions provided in each file. Each file is labeled with the name of the kymograph from a given cell type of the C. elegans      #
+# embryo.                                                                                                                            #
+#                                                                                                                                    #
+# The next step is to extract similar columns in each file and add them to a created csv file with a given name. The new files are   #
+# saved in different folder.                                                                                                         #
+#                                                                                                                                    #
+######################################################################################################################################
 
 def distanceCalculation(files):
     for file in files:
@@ -68,7 +71,7 @@ def distanceCalculation(files):
     return None
 
 #####################################################################################################################################
-''' Both "parameterExtract()" and "extractColumn()" have the same function'''
+# Both "parameterExtract()" and "extractColumn()" have the same function                                                            #
 #####################################################################################################################################
 
 def parameterExtract(file_path, folder_input, folder_output):

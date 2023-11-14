@@ -176,7 +176,6 @@ def ChromosomeMaximaQuality(list_maxima, maximum_frame = 20):
             
         return count_correct_detection/maximum_frame
 
-    
 """" Reading out the positions of the centrosomes and chromosome maxima and saving as a dataframe"""    
 def reformatPositionsPoles(maxima_positions):
     minima_position = [np.min(f) for f in maxima_positions]
