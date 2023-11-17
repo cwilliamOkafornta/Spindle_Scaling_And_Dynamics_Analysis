@@ -39,7 +39,7 @@ def distanceCalculation(files):
             '''calculate the distances by parsing the values from the given dataframe (columns)'''
             list_pole_chromosome = [] # create a list of the pole-to-chromosome distances of both sides
 
-            # calculate the 3D Euclidean distance of poles and chromosomes
+            # calculate the 2D Euclidean distance of poles and chromosomes
             p1_p2 = ((abs(df['pole1']-df['pole2']))*0.1)**2
             p1_c1 = ((abs(df['pole1']-df['chromatid1']))*0.1)**2
             p2_c2 = ((abs(df['pole2']-df['chromatid2']))*0.1)**2

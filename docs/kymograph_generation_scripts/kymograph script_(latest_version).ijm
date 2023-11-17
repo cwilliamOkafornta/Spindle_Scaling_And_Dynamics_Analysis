@@ -2,10 +2,13 @@
 // -------------------------------
 // 
 // This script takes a 3D+time+channel stack and a cvs file containing the 
-// 3D coordinates of the centrosomes of the corresponding image file as input. 
-// The script generates 2D kymographs over time series and stack them together 
-// as a continuous representative kymograph
-//
+// 3D coordinates of the two centrosomes of each spindle in each corresponding 
+// image file as input and assumes a line between them. Afterwards, the stack 
+// is transformed to become isotropic with the new Z-axis along the determined 
+// line. A kymograph is generated for all channels and time points summing 
+// intensities in Z-planes in the transformed stack. Furthermore, three maximum 
+// projections (X, Y and Z) are drawn to visualise cell division from three 
+// perspectives.
 // 
 // Installation: 
 //   To use this script in Fiji (http://fiji.sc/Downloads), you need to activate
