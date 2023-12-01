@@ -21,8 +21,9 @@
 //   * Configure filename and properts below this comment.
 //   * Click "run" in Fijis script editor.
 //
-// Authors: Robert Haase, rhaase@mpi-cbg.de
-//			Chukwuebuka William Okafornta, chukwuebuka.okafornta@tu-dresden.de
+// Authors: 
+//	Robert Haase, rhaase@mpi-cbg.de
+//	Chukwuebuka William Okafornta, chukwuebuka.okafornta@tu-dresden.de
 // 
 // January 2021
 // License: BSD3
@@ -263,4 +264,4 @@ for (p = 0; p < 3; p++) {
 Ext.CLIJ2_reportMemory(); 
 Ext.CLIJ2_clear(); 
 print("Bye");
-
+
