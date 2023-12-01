@@ -25,11 +25,12 @@
 //	Robert Haase, rhaase@mpi-cbg.de
 //	Chukwuebuka William Okafornta, chukwuebuka.okafornta@tu-dresden.de
 // 
-// January 2021
+// 	January 2021
+//
 // License: BSD3
 // 
-// Copyright 2021	Robert Haase, Max Planck Institute for Molecular Cell Biology and Genetics Dresden
-//					Chukwuebuka William Okafornta,  Medical Theoretical Center, Technische Universität Dresden
+// Copyright	2021	Robert Haase, Max Planck Institute for Molecular Cell Biology and Genetics Dresden
+//			Chukwuebuka William Okafornta,  Medical Theoretical Center, Technische Universität Dresden
 //
 // Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 // 1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
