@@ -35,81 +35,41 @@ def PoleToPole_CSVvalues_BoxPlot(input_folder, output_folder):
 
                 # iterate over the Cell Type column
                 for cell_type in Result_fit_table['Cell Type'].unique():
-                    try:
 
-                        # Initial length
-                        cell_type_column_initial = f'{cell_type}'
-                        values_initial = Result_fit_table .loc[Result_fit_table ['Cell Type'] == cell_type, 
-                                                            'Initial pole_pole length (µm)'].reset_index(drop=True)
-                        new_table_initial[cell_type_column_initial] = values_initial
+                    # Initial length
+                    cell_type_column_initial = f'{cell_type}'
+                    values_initial = Result_fit_table .loc[Result_fit_table ['Cell Type'] == cell_type, 
+                                                           'Initial pole_pole length (µm)'].reset_index(drop=True)
+                    new_table_initial[cell_type_column_initial] = values_initial
 
-                        # final length
-                        cell_type_column_final = f'{cell_type}'
-                        values_final = Result_fit_table .loc[Result_fit_table['Cell Type'] == cell_type, 
-                                                            'Final pole_pole length (µm)'].reset_index(drop=True)
-                        new_table_final[cell_type_column_final] = values_final
+                    # final length
+                    cell_type_column_final = f'{cell_type}'
+                    values_final = Result_fit_table .loc[Result_fit_table['Cell Type'] == cell_type, 
+                                                         'Final pole_pole length (µm)'].reset_index(drop=True)
+                    new_table_final[cell_type_column_final] = values_final
 
-                        # elongation rate
-                        cell_type_column_elongation = f'{cell_type}'
-                        values_elongation = Result_fit_table .loc[Result_fit_table['Cell Type'] == cell_type, 
-                                                                'Elongation rate (µm/min)'].reset_index(drop=True)
-                        new_table_elongation[cell_type_column_elongation] = values_elongation
+                    # elongation rate
+                    cell_type_column_elongation = f'{cell_type}'
+                    values_elongation = Result_fit_table .loc[Result_fit_table['Cell Type'] == cell_type, 
+                                                              'Elongation rate (µm/min)'].reset_index(drop=True)
+                    new_table_elongation[cell_type_column_elongation] = values_elongation
 
-                        # metaphase pole-to-pole length
-                        cell_type_column_metaphase = f'{cell_type}'
-                        values_metaphase = Result_fit_table .loc[Result_fit_table['Cell Type'] == cell_type, 
-                                                                'Metaphase_length (µm)'].reset_index(drop=True)
-                        new_table_Metaphase_len[cell_type_column_metaphase] = values_metaphase
-                        
-                        # Create the new table DataFrame
-                        newTable_initial = pd.DataFrame(new_table_initial)
-                        newTable_final = pd.DataFrame(new_table_final)
-                        newTable_elongation = pd.DataFrame(new_table_elongation)
-                        newTable_metaphase = pd.DataFrame(new_table_Metaphase_len)
+                    # metaphase pole-to-pole length
+                    cell_type_column_metaphase = f'{cell_type}'
+                    values_metaphase = Result_fit_table .loc[Result_fit_table['Cell Type'] == cell_type, 
+                                                              'Metaphase_length (µm/min)'].reset_index(drop=True)
+                    new_table_Metaphase_len[cell_type_column_metaphase] = values_metaphase
                     
-                    except Exception:
-                        pass
+                    # Create the new table DataFrame
+                    newTable_initial = pd.DataFrame(new_table_initial)
+                    newTable_final = pd.DataFrame(new_table_final)
+                    newTable_elongation = pd.DataFrame(new_table_elongation)
+                    newTable_metaphase = pd.DataFrame(new_table_Metaphase_len)
                     
-    # mean of initial length for each embryonic cell stage
-    mean_initial = pd.DataFrame((newTable_initial.mean()))
-    std_initial = pd.DataFrame((newTable_initial.std()))
-   
-    mean_initial.columns = ['Initial length mean']
-    std_initial.columns = ['Initial length std']
-    
-    new_mean_initial = pd.concat([mean_initial, std_initial], axis=1)
-    new_mean_initial.index.name = 'Cell stage'
-    # new_mean_initial.sort_values(by='Initial length mean', ascending=False)
-        
-    # mean of final length for each embryonic cell stage
-    mean_final = pd.DataFrame((newTable_final.mean()))
-    std_final = pd.DataFrame((newTable_final.std()))
-    
-    mean_final.columns = ['final length mean']
-    std_final.columns = ['final length std']
-    
-    new_mean_final = pd.concat([mean_final, std_final], axis=1)
-    new_mean_final.index.name = 'Cell stage'
-    # new_mean_final.sort_values(by='final length mean', ascending=False)
-        
-    # mean of elongation length for each embryonic cell stage
-    mean_elongation = pd.DataFrame((newTable_elongation.mean()))
-    std_elongation = pd.DataFrame((newTable_elongation.std()))
-    
-    mean_elongation.columns = ['elongation rate mean']
-    std_elongation.columns = ['elongation rate std']
-    
-    new_mean_elongation = pd.concat([mean_elongation, std_elongation], axis=1)
-    new_mean_elongation.index.name = 'Cell stage'
-    # new_mean_elongation.sort_values(by='elongation length mean', ascending=False)
-        
     # save in another folder
     newTable_initial.to_csv(os.path.join(output_folder, 'Initial pole_to_pole_length ().csv'), index=False, encoding='utf-8')
-    new_mean_initial.to_csv(os.path.join(output_folder, 'mean_Initial pole_to_pole_length ().csv'), index=True, encoding='utf-8')
-    newTable_final.to_csv(os.path.join(output_folder, 'Final pole_to_pole_length ().csv'), index=False, encoding='utf-8')
-    new_mean_final.to_csv(os.path.join(output_folder, 'mean_final pole_to_pole_length ().csv'), index=True, encoding='utf-8')
-    newTable_elongation.to_csv(os.path.join(output_folder, 'elongation_rate pole_to_pole ().csv'), index=False, encoding='utf-8')
-    new_mean_elongation.to_csv(os.path.join(output_folder, 'mean_elongation rate ().csv'), index=True, encoding='utf-8')
+    newTable_final.to_csv(os.path.join(output_folder, 'Final pole_pole length ().csv'), index=False, encoding='utf-8')
+    newTable_elongation.to_csv(os.path.join(output_folder, 'Elongation rate pole_to_pole ().csv'), index=False, encoding='utf-8')
     newTable_metaphase.to_csv(os.path.join(output_folder, 'Metaphase_pole_to_pole_length ().csv'), index=False, encoding='utf-8')
     
 ###############################################################################################################################
@@ -172,58 +132,12 @@ def PoleToChromosome_CSVvalues_BoxPlot(input_folder, output_folder):
                     newTable_ratio = pd.DataFrame(new_table_ratio)
                     newTable_metaphase = pd.DataFrame(new_table_Metaphase_len)
                     
-    # mean of initial length for each embryonic cell stage
-    mean_initial = pd.DataFrame((newTable_initial.mean()))
-    std_initial = pd.DataFrame((newTable_initial.std()))
-   
-    mean_initial.columns = ['Initial length mean']
-    std_initial.columns = ['Initial length std']
-    
-    new_mean_initial = pd.concat([mean_initial, std_initial], axis=1)
-    new_mean_initial.index.name = 'Cell stage'
-    # new_mean_initial.sort_values(by='Initial length mean', ascending=False)
-    
-    # mean of final length for each embryonic cell stage
-    mean_final = pd.DataFrame((newTable_final.mean()))
-    std_final = pd.DataFrame((newTable_final.std()))
-    
-    mean_final.columns = ['final length mean']
-    std_final.columns = ['final length std']
-    
-    new_mean_final = pd.concat([mean_final, std_final], axis=1)
-    new_mean_final.index.name = 'Cell stage'
-    # new_mean_final.sort_values(by='final length mean', ascending=False)
-    
-    # mean of reduction length for each embryonic cell stage
-    mean_reduction = pd.DataFrame((newTable_reduction.mean()))
-    std_reduction = pd.DataFrame((newTable_reduction.std()))
-    
-    mean_reduction.columns = ['reduction rate mean']
-    std_reduction.columns = ['reduction rate std']
-    
-    new_mean_reduction = pd.concat([mean_reduction, std_reduction], axis=1)
-    new_mean_reduction.index.name = 'Cell stage'
-
-    # mean of ratio length for each embryonic cell stage
-    mean_ratio = pd.DataFrame((newTable_ratio.mean()))
-    std_ratio = pd.DataFrame((newTable_ratio.std()))
-    
-    mean_ratio.columns = ['ratio length mean']
-    std_ratio.columns = ['ratio length std']
-    
-    new_mean_ratio = pd.concat([mean_ratio, std_ratio], axis=1)
-    new_mean_ratio.index.name = 'Cell stage'
-    # new_mean_ratio.sort_values(by='ratio length mean', ascending=False)
-    
+        
     # save in another folder
     newTable_initial.to_csv(os.path.join(output_folder, 'Initial pole_to_chromosome_length ().csv'), index=False, encoding='utf-8')
-    new_mean_initial.to_csv(os.path.join(output_folder, 'mean_Initial pole_to_chromosome_length ().csv'), index=True, encoding='utf-8')
     newTable_final.to_csv(os.path.join(output_folder, 'Final pole_to_chromosome_length ().csv'), index=False, encoding='utf-8')
-    new_mean_final.to_csv(os.path.join(output_folder, 'mean_final pole_to_chromosome_length ().csv'), index=True, encoding='utf-8')
     newTable_reduction.to_csv(os.path.join(output_folder, 'Reduction_rate ().csv'), index=False, encoding='utf-8')
-    new_mean_reduction.to_csv(os.path.join(output_folder, 'mean_reduction rate ().csv'), index=True, encoding='utf-8')
     newTable_ratio.to_csv(os.path.join(output_folder, 'Ratio_final_vs_initial ().csv'), index=False, encoding='utf-8')
-    new_mean_ratio.to_csv(os.path.join(output_folder, 'mean_ratio pole_to_chromosome_length ().csv'), index=True, encoding='utf-8')
     newTable_metaphase.to_csv(os.path.join(output_folder, 'Metaphase_pole_to_chromosome_length ().csv'), index=False, encoding='utf-8')
 
 ###############################################################################################################################
@@ -259,29 +173,8 @@ def ChromosomeToChromosome_CSVvalues_BoxPlot(input_folder, output_folder):
                     newTable_final = pd.DataFrame(new_table_final) 
                     newTable_speed = pd.DataFrame(new_table_speed)
                     
-    # mean of final length for each embryonic cell stage
-    mean_final = pd.DataFrame((newTable_final.mean()))
-    std_final = pd.DataFrame((newTable_final.std()))
-    
-    mean_final.columns = ['final length mean']
-    std_final.columns = ['final length std']
-    
-    new_mean_final = pd.concat([mean_final, std_final], axis=1)
-    new_mean_final.index.name = 'Cell stage'
-    
-    # mean of speed of segregation for each embryonic cell stage
-    mean_speed = pd.DataFrame((newTable_speed.mean()))
-    std_speed = pd.DataFrame((newTable_speed.std()))
-    
-    mean_speed.columns = ['speed rate mean']
-    std_speed.columns = ['speed rate std']
-    
-    new_mean_speed = pd.concat([mean_speed, std_speed], axis=1)
-    new_mean_speed.index.name = 'Cell stage'
-    
     # save in another folder
     newTable_final.to_csv(os.path.join(output_folder, 'Final chromosome_to_chromosome_length ().csv'), index=False, encoding='utf-8')
-    new_mean_final.to_csv(os.path.join(output_folder, 'mean_final chromosome_to_chromosome_length ().csv'), index=True, encoding='utf-8')
     newTable_speed.to_csv(os.path.join(output_folder, 'Segregation speed_C_C ().csv'), index=False, encoding='utf-8')
-    new_mean_speed.to_csv(os.path.join(output_folder, 'mean_segregation_speed ().csv'), index=True, encoding='utf-8')
+    
 ###############################################################################################################################

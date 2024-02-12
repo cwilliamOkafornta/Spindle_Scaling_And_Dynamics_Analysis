@@ -7,14 +7,12 @@ This script is used to calculate for the following parameters:
     - standard deviation from the calculated mean values.
 The calculated parameters are appended in a new table and exported as a csv file to be used for plotting and further analysis.
 '''
-
 ####################################################################################################################################################
 
 # library packages
 import os
 import pandas as pd
 import numpy as np
-
 ####################################################################################################################################################
 
 def cellVolumeLengthValues(folder_input, folder_output, file_input, savefilename):
@@ -28,7 +26,7 @@ def cellVolumeLengthValues(folder_input, folder_output, file_input, savefilename
             df = pd.read_csv(file_path, index_col=None, encoding='latin-1')
         file_list.append(df)
 
-    # assign new variable to each dataframe
+    # assign new variable to each dataFrame
     cell_vol = file_list[0]
     chromosomes_dist = file_list[1]
     poles_dist = file_list[2]
@@ -51,7 +49,7 @@ def cellVolumeLengthValues(folder_input, folder_output, file_input, savefilename
     mean_chromosomes_std = pd.DataFrame()
     for col in chromosomes_dist.columns:
         '''mean chromosome-to-chromosome final distance'''
-        new_val_temp = pd.DataFrame.from_dict({f"{col}": np.mean(chromosomes_dist[col])}, orient='index', columns=['C-to-C (µm³)'])
+        new_val_temp = pd.DataFrame.from_dict({f"{col}": np.mean(chromosomes_dist[col])}, orient='index', columns=['C-to-C (µm)'])
         dist_mean_chromosomes = pd.concat([dist_mean_chromosomes, new_val_temp], axis=0)
 
         '''standard deviation chromosome-to-chromosome final distance'''
@@ -63,7 +61,7 @@ def cellVolumeLengthValues(folder_input, folder_output, file_input, savefilename
     mean_poles_std = pd.DataFrame()
     for col_poles in poles_dist.columns:
         '''mean pole-to-pole final distance'''
-        new_val_pole_temp = pd.DataFrame.from_dict({f"{col_poles}": np.mean(poles_dist[col_poles])}, orient='index', columns=['P-to-P (µm³)'])
+        new_val_pole_temp = pd.DataFrame.from_dict({f"{col_poles}": np.mean(poles_dist[col_poles])}, orient='index', columns=['P-to-P (µm)'])
         dist_mean_poles = pd.concat([dist_mean_poles, new_val_pole_temp], axis=0)
 
         '''standard deviation pole-to-pole final distance'''
@@ -75,7 +73,7 @@ def cellVolumeLengthValues(folder_input, folder_output, file_input, savefilename
     mean_PC_std = pd.DataFrame()
     for col_PC in pole_chromosomes:
         '''mean pole-to-chromosome final distance'''
-        new_val_PC_temp = pd.DataFrame.from_dict({f"{col_PC}": np.mean(pole_chromosomes[col_PC])}, orient='index', columns=['P-to-C (µm³)'])
+        new_val_PC_temp = pd.DataFrame.from_dict({f"{col_PC}": np.mean(pole_chromosomes[col_PC])}, orient='index', columns=['P-to-C (µm)'])
         dist_mean_PC = pd.concat([dist_mean_PC, new_val_PC_temp], axis=0)
 
         '''standard deviation pole-to-chromosome final distance'''
