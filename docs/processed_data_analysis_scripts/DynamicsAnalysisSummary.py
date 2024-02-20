@@ -1,3 +1,29 @@
+############################################################################################################################################
+'''
+This script is used for calculating and extracting summary values for the spindle dynamics measurements for all the embryonic conditions. 
+The aim is to determine the mean and the corresponding standard deviation of the measurement of each embryonic cell stage. The resulting 
+outputs are combined to form a new table DataFrame which is subsequently stored as a csv file.
+
+The `spindleDynamicsValues` executes different functions to extract and calculate for different parameters. Each parameter computation has 
+a function which can be executed independently, if need be. To execute `spindleDynamicsValues()`, the defined arguments within the function 
+have to be entered correctly. The description of the arguments are shown below:
+
+spindleDynamicsValues(cell_volume_file_number,
+                          chromosome_file_number,
+                          poles_file_number,
+                          pole_chromosome_file_number,
+                          metaphase_pole_file_number,
+                          elongation_speed_file_number,
+                          segregation_speed_file_number,
+                          initial_pole_file_number,
+                          folder_input,
+                          file_input,
+                          save_folder,
+                          save_file_name,
+                          embryo_condition)
+'''
+############################################################################################################################################
+
 # library packages
 import os
 import pandas as pd
