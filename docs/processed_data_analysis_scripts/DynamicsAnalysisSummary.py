@@ -224,8 +224,10 @@ def spindleDynamicsValues(cell_volume_file_number,
                           save_file_name,
                           embryo_condition):
     
+    ''''Load the files from the input folder into a list'''
     parameter_files = fileLoad(folder_input, file_input)
     
+    '''redefine the calculated parameters into new variables'''
     cell_volume_length = cellVolumeLength(cell_volume_file_number, parameter_files)
     final_chromosome_length = chromosomeDistance(chromosome_file_number, parameter_files)
     final_poles_length = poleDistance(poles_file_number, parameter_files)

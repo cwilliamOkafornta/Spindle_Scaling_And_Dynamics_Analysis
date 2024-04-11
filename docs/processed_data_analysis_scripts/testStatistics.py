@@ -6,7 +6,7 @@ from scipy import stats
 #######################################################################################################################################################
 '''
 This script is used to compute for a statistical t-test of unequal variance.
-The t-test is computer for the data from different analysis between different conditions of data source; in this case, the data from the wild type and 
+The t-test computes for the data from different analysis between different conditions of data source; in this case, the data from the wild type and 
 RNAi treated conditions of a C. elegans embryo.
 The analysis data that this t-test is calculated for are:
     - pole-to-pole distance analysis 
@@ -48,16 +48,16 @@ def ttestPoletoPole(folder_input, filedata_input, folder_output, name_cond1_file
                 df1 = pd.read_csv(filepath, index_col=None, encoding='latin-1')
             cond2_final_pp.append(df1)
 
-    # create new dataframes
+    # create new DataFrames
     cond1_final_pp = pd.concat(cond1_final_pp, ignore_index=True)
     cond2_final_pp = pd.concat(cond2_final_pp, ignore_index=True)
-    new_cond1_final_pp = cond1_final_pp.iloc[:,1:] # omit the first column '1-cell'
+    # cond1_final_pp = cond1_final_pp.iloc[:,1:] # omit the first column '1-cell'
     
     # compute for Independent t-test between the 2 given conditions
     '''The independent t-test uses statistical test of unequal variance'''
     test_values = pd.DataFrame()
-    for column in new_cond1_final_pp.columns:
-        cond1_final_pp_column = new_cond1_final_pp[column].dropna()
+    for column in cond1_final_pp.columns:
+        cond1_final_pp_column = cond1_final_pp[column].dropna()
         cond2_final_pp_column = cond2_final_pp[column].dropna()
         t_stat, t_p_value = stats.ttest_ind(cond1_final_pp_column, cond2_final_pp_column, equal_var=False, nan_policy='omit')
         new_value = {f"{column} of {condition_1} and {condition_2}": t_p_value}
@@ -65,7 +65,7 @@ def ttestPoletoPole(folder_input, filedata_input, folder_output, name_cond1_file
         test_values = pd.concat([test_values, new_value_df], axis=0)
     test_values.index.name = 'Significance comparison'
     
-    # compute for Independet t-test between columns of condition_1 data
+    # compute for Independent t-test between columns of condition_1 data
     '''The independent t-test uses statistical test of unequal variance'''
     test_own_values_cond1 = pd.DataFrame()
     for i, col1 in enumerate(cond1_final_pp):
@@ -78,7 +78,7 @@ def ttestPoletoPole(folder_input, filedata_input, folder_output, name_cond1_file
             test_own_values_cond1 = pd.concat([test_own_values_cond1, own_new_values_df], axis=0)
     test_own_values_cond1.index.name = 'Significance comparison'    
     
-    # compute for Independet t-test between columns of condition_2 data
+    # compute for Independent t-test between columns of condition_2 data
     '''The independent t-test uses statistical test of unequal variance'''
     test_own_values_cond2 = pd.DataFrame()
     for i, col1 in enumerate(cond2_final_pp):
@@ -132,13 +132,13 @@ def ttestChromosometoChromosome(folder_input, filedata_input, folder_output, nam
     # create new dataframes
     cond1_final_cc = pd.concat(cond1_final_cc, ignore_index=True)
     cond2_final_cc = pd.concat(cond2_final_cc, ignore_index=True)
-    new_cond1_final_cc = cond1_final_cc.iloc[:,1:] # omit the first column '1-cell'
+    # cond1_final_cc = cond1_final_cc.iloc[:,1:] # omit the first column '1-cell'
     
     # compute for Independent t-test between the 2 given conditions
     '''The independent t-test uses statistical test of unequal variance'''
     test_values = pd.DataFrame()
-    for column in new_cond1_final_cc.columns:
-        cond1_final_cc_column = new_cond1_final_cc[column].dropna()
+    for column in cond1_final_cc.columns:
+        cond1_final_cc_column = cond1_final_cc[column].dropna()
         cond2_final_cc_column = cond2_final_cc[column].dropna()
         t_stat, t_p_value = stats.ttest_ind(cond1_final_cc_column, cond2_final_cc_column, equal_var=False, nan_policy='omit')
         new_value = {f"{column} of {condition_1} and {condition_2}": t_p_value}
@@ -146,7 +146,7 @@ def ttestChromosometoChromosome(folder_input, filedata_input, folder_output, nam
         test_values = pd.concat([test_values, new_value_df], axis=0)
     test_values.index.name = 'Significance comparison'
     
-    # compute for Independet t-test between columns of condition_1 data
+    # compute for Independent t-test between columns of condition_1 data
     '''The independent t-test uses statistical test of unequal variance'''
     test_own_values_cond1 = pd.DataFrame()
     for i, col1 in enumerate(cond1_final_cc):
@@ -154,6 +154,7 @@ def ttestChromosometoChromosome(folder_input, filedata_input, folder_output, nam
             cond1_final_cc_col1 = cond1_final_cc[col1].dropna()
             cond1_final_cc_col2 = cond1_final_cc[col2].dropna()
             t_stat_1, t_p_value_1 = stats.ttest_ind(cond1_final_cc_col1, cond1_final_cc_col2, equal_var=False, nan_policy='omit')
+            # t_stat_1, t_p_value_1 = stats.ttest_ind(cond1_final_cc_col1, cond1_final_cc_col2, equal_var=False, alternative='two-sided', nan_policy='omit')
             own_new_values = {f"{col1} and {col2} of {condition_1}": t_p_value_1}
             own_new_values_df = pd.DataFrame.from_dict(own_new_values, orient='index', columns=['p-value'])
             test_own_values_cond1 = pd.concat([test_own_values_cond1, own_new_values_df], axis=0)
@@ -167,6 +168,7 @@ def ttestChromosometoChromosome(folder_input, filedata_input, folder_output, nam
             cond2_final_cc_col1 = cond2_final_cc[col1].dropna()
             cond2_final_cc_col2 = cond2_final_cc[col2].dropna()
             t_stat_2, t_p_value_2 = stats.ttest_ind(cond2_final_cc_col1, cond2_final_cc_col2, equal_var=False, nan_policy='omit')
+            # t_stat_1, t_p_value_1 = stats.ttest_ind(cond1_final_cc_col1, cond1_final_cc_col2, equal_var=False, alternative='two-sided', nan_policy='omit')
             own_new_values_cond2 = {f"{col1} and {col2} of {condition_2}": t_p_value_2}
             own_new_values_cond2_df = pd.DataFrame.from_dict(own_new_values_cond2, orient='index', columns=['p-value'])
             test_own_values_cond2 = pd.concat([test_own_values_cond2, own_new_values_cond2_df], axis=0)
@@ -213,13 +215,13 @@ def ttestPoletoChromosome(folder_input, filedata_input, folder_output, name_cond
     # create new dataframes
     cond1_final_pc = pd.concat(cond1_final_pc, ignore_index=True)
     cond2_final_pc = pd.concat(cond2_final_pc, ignore_index=True)
-    new_cond1_final_pc = cond1_final_pc.iloc[:,1:] # omit the first column '1-cell'
+    # cond1_final_pc = cond1_final_pc.iloc[:,1:] # omit the first column '1-cell'
     
     # compute for Independent t-test between the 2 given conditions
     '''The independent t-test uses statistical test of unequal variance'''
     test_values = pd.DataFrame()
-    for column in new_cond1_final_pc.columns:
-        cond1_final_pc_column = new_cond1_final_pc[column].dropna()
+    for column in cond1_final_pc.columns:
+        cond1_final_pc_column = cond1_final_pc[column].dropna()
         cond2_final_pc_column = cond2_final_pc[column].dropna()
         t_stat, t_p_value = stats.ttest_ind(cond1_final_pc_column, cond2_final_pc_column, equal_var=False, nan_policy='omit')
         new_value = {f"{column} of {condition_1} and {condition_2}": t_p_value}
