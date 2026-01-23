@@ -10,7 +10,6 @@ for this script.
 
 # library packages
 import pandas as pd
-import numpy as np
 import os
 
 # define a function for the operation.
