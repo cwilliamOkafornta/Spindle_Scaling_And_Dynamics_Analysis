@@ -34,9 +34,9 @@ The core of the analysis pipeline is located in the `docs/` directory, organized
 ## 🚀 Getting Started
 
 ### Prerequisites
-- **MATLAB**: Required for raw image processing scripts.
-- **Fiji/ImageJ**: Required for kymograph and spot-finding macros.
-- **Python 3.x**: Recommended to use a virtual environment.
+- **Fiji/ImageJ**: Required for spot-finding and kymograph generation macros.
+- **MATLAB**: Required for signal intensity readout from the generated kymographs.
+- **Python 3.9+: Recommended to use a virtual environment.
   ```bash
   pip install -r environment.yml  # or use conda
   ```
