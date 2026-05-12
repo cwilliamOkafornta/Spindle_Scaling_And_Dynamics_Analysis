@@ -1,6 +1,6 @@
-# C. elegans Spindle Scaling and Dynamics Analysis
+# *C. elegans* spindle length scaling and chromosome dynamics analysis
 
-This repository contains a comprehensive suite of tools for processing, analyzing, and visualizing spindle and chromosome dynamics in *C. elegans* embryos. The workflow covers the entire pipeline from raw image data to publication-quality statistical analysis.
+This repository contains a comprehensive suite of tools for processing, analyzing, and visualizing spindle length and chromosome dynamics in *C. elegans* embryos. The workflow covers the entire pipeline from raw image data processing to publication-quality statistical analysis.
 
 ## 📁 Repository Structure
 
