@@ -2,6 +2,10 @@
 
 This repository contains a comprehensive suite of tools for processing, analyzing, and visualizing spindle length and chromosome dynamics in *C. elegans* embryos. The workflow covers the entire pipeline from raw image data processing to publication-quality statistical analysis.
 
+This repository  used for the data processing and analysis of the study in the manuscript titled, "Cell size reduction distinctly scales spindle elongation and chromosome segregation in *C. elegans*". 
+
+Manuscript status: Under review in Nature Communications.
+
 ## 📁 Repository Structure
 
 The core of the analysis pipeline is located in the `docs/` directory, organized into specialized sub-folders:
@@ -14,7 +18,7 @@ The core of the analysis pipeline is located in the `docs/` directory, organized
 ### 2. [Fit Function Analysis](./docs/Fit_function/)
 - **Description**: Jupyter notebooks for mathematical modeling of spindle components.
 - **Key Task**: Fits Sigmoid, Exponential, and Polynomial curves to individual experiment datasets.
-- **Output**: Kinetic parameters like elongation rates, segregation speeds, and initial/final lengths.
+- **Output**: Dynamic parameters like elongation rates, segregation speeds, and initial/final lengths.
 
 ### 3. [Spindle Dynamics Quantification](./docs/Spindle_dynamics_quantification/)
 - **Description**: Notebooks dedicated to generating publication figures (Figures 1, 2, and supplemental).
@@ -35,8 +39,8 @@ The core of the analysis pipeline is located in the `docs/` directory, organized
 
 ### Prerequisites
 - **Fiji/ImageJ**: Required for spot-finding and kymograph generation macros.
-- **MATLAB**: Required for signal intensity readout from the generated kymographs.
-- **Python 3.9+: Recommended to use a virtual environment.
+- **MATLAB**: Required for signal intensity readout (peak detection) from the generated kymographs.
+- **Python 3.9+**: Recommended to use a virtual environment.
   ```bash
   pip install -r environment.yml  # or use conda
   ```
