@@ -2,7 +2,7 @@
 
 This repository contains a comprehensive suite of tools for processing, analyzing, and visualizing spindle length and chromosome dynamics in *C. elegans* embryos. The workflow covers the entire pipeline from raw image data processing to publication-quality statistical analysis.
 
-This repository  used for the data processing and analysis of the study in the manuscript titled, **"Cell size reduction distinctly scales spindle elongation and chromosome segregation in *C. elegans*"**. 
+This repository  is used for the data processing and analysis for the study in the manuscript titled, **"Cell size reduction distinctly scales spindle elongation and chromosome segregation in *C. elegans*"**. 
 
 Manuscript status: Under review in Nature Communications.
 
@@ -21,7 +21,7 @@ The core of the analysis pipeline is located in the `docs/` directory, organized
 - **Output**: Dynamic parameters like elongation rates, segregation speeds, and initial/final lengths.
 
 ### 3. [Spindle Dynamics Quantification](./docs/Spindle_dynamics_quantification/)
-- **Description**: Notebooks dedicated to generating publication figures (Figures 1, 2, and supplemental).
+- **Description**: Notebooks dedicated to generating publication figures (Figures 1, 2, and supplementary Figure).
 - **Key Task**: Quantifies dynamics as a function of cell size and developmental stage.
 - **Output**: Publication-quality plots and summary statistics.
 

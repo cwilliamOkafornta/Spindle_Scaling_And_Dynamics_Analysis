@@ -1,4 +1,4 @@
-# Bio-image Data Processing and Data Extraction
+# Bio-image data processing and data extraction
 
 This folder contains scripts and macros for processing raw microscopy images (typically multi-channel TIFF files) to extract quantitative data about centrosome and chromosome positions over time.
 
