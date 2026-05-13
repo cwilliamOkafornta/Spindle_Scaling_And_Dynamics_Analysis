@@ -50,7 +50,7 @@ close("*");
 roiManager("reset");
 
 //define the path
-folder = "D:/data/Analysis Data/Exp_data/Exp_RNAi_c27d9.1/Exp59a_tmr31-c27d9-1-08cell_LLSM_20220126/Exp59a_tmr31-c27d9-1-08cell_LLSM_20220126_Analysis/8cell_ABar/8cell_ABar_ImageJ/";
+folder = "path to dataset folder/8cell_ABar/8cell_ABar_ImageJ/";
 image = "8cell_ABar.tif";
 table = "8cell_ABar_coordinates.csv";
 Kymo = "8cell_ABar_kymo/8cell_ABar_kymo.tif";
