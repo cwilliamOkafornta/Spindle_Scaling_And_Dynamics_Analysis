@@ -14,12 +14,11 @@ except ImportError:
     HAS_GPU = False
 
 def resolve_path(path):
-    """Ensures the path exists. Searching outside the designated folder is disabled."""
+    """Ensures the path exists"""
     if not path or os.path.exists(path):
         return path
     
-    # Searching outside the designated folder is now disabled as per user request.
-    # We will just return the original path and let the opening operation fail if it doesn't exist.
+    # Return the original path and let the opening operation fail if it doesn't exist.
     return path
 
 class MicrotubuleSpatialGraph:
@@ -107,7 +106,7 @@ class MicrotubuleSpatialGraph:
             e_conn_marker = get_marker("EdgeConnectivity", "EDGE") or ("@2" if is_ascii else "@10")
             e_npts_marker = get_marker("NumEdgePoints", "EDGE") or ("@3" if is_ascii else "@11")
             
-            # For points, we try common names
+            # For points, try common names
             p_marker = get_marker("EdgePointCoordinates", "POINT") or get_marker("Coordinates", "POINT")
             if not p_marker:
                 if is_ascii: p_marker = "@4" if "@4" in header else "@12"
@@ -547,7 +546,7 @@ VERTEX {{ float[3] VertexCoordinates }} @1
     def export_tortuosity_heatmap(self, df_quant, output_dir, bin_size=1000.0, c1=None, c2=None):
         """
         Exports a 3D heatmap of tortuosity using Plotly (HTML) and Amira (.am).
-        Uses sky-blue intensity for tortuosity levels.
+        Uses color intensity for tortuosity levels.
         """
         if df_quant is None or df_quant.empty:
             print("No tortuosity data to export.")
@@ -818,7 +817,7 @@ def load_pole_centroids(file_path):
     with open(file_path, 'rb') as f:
         content = f.read()
         # Find start of data section (@1) strictly in the data part (avoiding definitions)
-        # We look for \n@1 followed by newline to avoid false positives in binary data
+        # Look for \n@1 followed by newline to avoid false positives in binary data
         marker_idx = content.find(b'\n@1\n')
         if marker_idx == -1:
             marker_idx = content.find(b'\n@1\r\n')
