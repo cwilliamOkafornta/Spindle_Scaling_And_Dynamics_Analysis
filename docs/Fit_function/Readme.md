@@ -1,6 +1,6 @@
 # Fit Function Analysis
 
-This folder contains Jupyter notebooks designed to fit mathematical models to experimental distance data extracted from *C. elegans* embryos. The goal is to determine key kinetic parameters such as initial/final lengths and rates of movement.
+This folder contains Jupyter notebooks designed to fit mathematical models to experimental distance data extracted from *C. elegans* embryos. The goal is to determine key dynamics parameters such as initial/final lengths and rates of movement.
 
 ## 📓 Notebooks
 
