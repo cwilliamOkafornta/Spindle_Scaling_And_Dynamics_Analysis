@@ -41,7 +41,7 @@ The spindle axis is defined as the vector connecting the centroids of the two ch
 
 ## 🛠️ Installation & Setup
 
-To ensure all dependencies (including the napari plugin) work correctly, we recommend using the local virtual environment.
+To ensure all dependencies (including the napari plugin) work correctly, it is recommended to use the local virtual environment.
 
 ### 1. Clone the repository
 ```bash
@@ -122,6 +122,22 @@ You can quickly check if the plugin's widget can be instantiated:
 - `napari-mt-interaction/`: Source code for the napari plugin.
 - `tomogram_analysis/`: Directory for input data (.am and .surf).
 - `output/`: Generated CSVs, images, and AmiraMesh files.
+    
+## 💾 Export file output
+Four CVS files are exported as follows:
+
+- `microtubule_interaction_summary`
+  - Column headers [Ref_Seg_ID,	Neighbor_Seg_ID,	Class_Ref,	Class_Neighbor,	Orientation,	Angle_deg,	Mean_Dist_A,	Int_Length_A,	Spindle_Pos_A,	Class_Ref_Name, 	Class_Neighbor_Name]
+
+- `mean_interaction_length_by_class`
+  - Column headers [Class_Ref_Name,	Class_Neighbor_Name,	Orientation	Int_Length_A,	Angle_deg	Spindle_Pos_A,	Mean_Dist_A]
+
+- `Microtubules_tortuosity_quantification`
+  - Column headers [Microtubule_ID,	Class_Name	Bin_Number	Bin_Position_Start	Mean_Spindle_Pos	Tortuosity]
+
+- `Microtubules_average_tortuosity`
+  - Column headers []
+
 
 ## ⚖️ License
 This project is licensed under the BSD-3-Clause License.
