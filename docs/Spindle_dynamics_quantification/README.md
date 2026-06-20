@@ -20,6 +20,7 @@ This folder contains Jupyter notebooks dedicated to the quantification of spindl
 - **`Figure_2f_2j_dynamics_summary_plots.ipynb`**: Quantifies and summarizes spindle elongation rates and segregation speeds as a function of cell size across different embryonic conditions.
 
 ### 4. Supplemental Analysis
+- **`Figure_supplement_2_single_pole_chromosome_distance_plot.ipynb`**: Dynamic spindle length and chromosome distance plots from a single cell in each embryonic cell stage.
 - **`Figure_supplement_6_plot_and_statistics_ELONGATION_RATE.ipynb`**: Detailed analysis and statistical plotting of elongation rates, specifically for supplemental figures.
 
 ## 🚀 How to Run
