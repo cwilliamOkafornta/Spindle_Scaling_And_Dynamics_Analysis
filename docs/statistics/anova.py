@@ -6,7 +6,7 @@ df = df.rename(columns={"Final pole_pole length (µm)": "Length"})
 df = df[["Stage", "Cell", "Length"]].dropna()
 df["Stage"] = df["Stage"].astype(str)
 df["Cell"]  = df["Cell"].astype(str)
-df["All"]   = 1  # single dummy group; onlyvariance components
+df["All"]   = 1  # single dummy group; only variance components
 
 # Random intercepts for Stage and for Cell (no interaction term)
 m = sm.MixedLM.from_formula(
