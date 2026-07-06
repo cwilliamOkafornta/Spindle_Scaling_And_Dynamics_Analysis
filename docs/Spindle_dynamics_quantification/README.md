@@ -16,7 +16,7 @@ This folder contains Jupyter notebooks dedicated to the quantification of spindl
 
 ### 3. Dynamics & Comparison Plots
 - **`Figure_2c_2g_dynamic_group_plots.ipynb`**: Visualizes average spindle elongation and chromosome segregation over time across different developmental stages and conditions (Wild-type vs. RNAi).
-- **`Figure_2d_2e_2g_2i_COMBINED_plots_Spindle_parameters.ipynb`**: Plots final spindle length and chromosome segregation distance as a function of cell size, including linear regression analysis.
+- **`Figure_2d_2e_2h_2i_COMBINED_plots_Spindle_parameters.ipynb`**: Plots final spindle length and chromosome segregation distance as a function of cell size, including linear regression analysis.
 - **`Figure_2f_2j_dynamics_summary_plots.ipynb`**: Quantifies and summarizes spindle elongation rates and segregation speeds as a function of cell size across different embryonic conditions.
 
 ### 4. Supplemental Analysis
