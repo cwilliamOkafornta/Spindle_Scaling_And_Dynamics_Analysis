@@ -15,22 +15,27 @@ The core of the analysis pipeline is located in the `docs/` directory, organized
 - **Key Task**: Extracts centrosome and chromosome positions using Gaussian fitting and peak detection.
 - **Output**: Time-resolved distance CSVs and validation plots.
 
-### 2. [Fit Function Analysis](./docs/Fit_function/)
+### 2. [Biophysical simulation](./docs/Biophysical%20simulation/)
+- **Description**: Python script for running a biophysical simulation for modeling mitotic spindle length elongation in different embryonic cell stage.
+- **Key Task**:
+- **Output**: 
+
+### 3. [Fit Function Analysis](./docs/Fit_function/)
 - **Description**: Jupyter notebooks for mathematical modeling of spindle components.
 - **Key Task**: Fits Sigmoid, Exponential, and Polynomial curves to individual experiment datasets.
 - **Output**: Dynamic parameters like elongation rates, segregation speeds, and initial/final lengths.
 
-### 3. [Spindle Dynamics Quantification](./docs/Spindle_dynamics_quantification/)
+### 4. [Spindle Dynamics Quantification](./docs/Spindle_dynamics_quantification/)
 - **Description**: Notebooks dedicated to generating publication figures (Figures 1, 2, and supplementary Figure).
 - **Key Task**: Quantifies dynamics as a function of cell size and developmental stage.
 - **Output**: Publication-quality plots and summary statistics.
 
-### 4. [Microtubule Interactions](./docs/Microtubule_interactions/)
+### 5. [Microtubule Interactions](./docs/Microtubule_interactions/)
 - **Description**: Advanced 3D analysis of microtubule (MT) segments from Amira SpatialGraph data.
 - **Key Task**: Calculates interaction proximity, tortuosity, and spatial metrics.
 - **Output**: 3D heatmaps, interactive reports, and AmiraMesh exports. Includes a custom **napari plugin**.
 
-### 5. [Statistical Analysis](./docs/statistics/)
+### 6. [Statistical Analysis](./docs/statistics/)
 - **Description**: Python scripts and notebooks for statistical validation.
 - **Key Task**: Performs independent t-tests (Welch's), ANOVA, and Mixed Linear Models.
 - **Output**: P-values and variance component analysis for comparing experimental conditions.
