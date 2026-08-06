@@ -4,7 +4,7 @@ This repository contains a comprehensive suite of tools for processing, analyzin
 
 This repository  is used for the data processing and analysis for the study in the manuscript titled, **"Cell size reduction distinctly scales spindle elongation and chromosome segregation in *C. elegans*"**. 
 
-Manuscript status: Under review in Nature Communications.
+Article doi link: [Nature Communications](https://doi.org/10.1038/s41467-026-76360-3)
 
 ## 📁 Repository Structure
 
